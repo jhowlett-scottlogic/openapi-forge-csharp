@@ -5,7 +5,7 @@ const shell = require("shelljs");
 const clArgs = process.argv.slice(2);
 
 // Retrieve the path to feature paths from cl arguments of 'npm test', use default value if none given
-const featurePath = clArgs[0] || "..\\..\\..\\openapi-forge\\features\\\*.feature";
+const featurePath = clArgs[0] || "../../../openapi-forge/features/*.feature";
 
 const projectPath = "./tests/FeaturesTests/FeaturesTests.csproj";
 
