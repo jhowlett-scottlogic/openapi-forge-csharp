@@ -7,6 +7,8 @@ const clArgs = process.argv.slice(2);
 // Retrieve the path to feature paths from cl arguments of 'npm test', use default value if none given
 const featurePath = clArgs[0] || "../../node_modules/openapi-forge/features/*.feature";
 
+console.log("featurePath:" + featurePath);
+
 const projectPath = "./tests/FeaturesTests/FeaturesTests.csproj";
 
 const originalFile = fs.readFileSync(projectPath, "utf-8");
