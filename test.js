@@ -16,7 +16,7 @@ const originalFile = fs.readFileSync(projectPath, "utf-8");
 
 // Replace file path to .feature files in .csproj file, use handlebars style to help make the search value unique
 fs.writeFileSync(projectPath, originalFile.replace("{{FEATURE_PATH}}", featurePath));
-console.log(originalFile.replace("{{FEATURE_PATH}}", featurePath));
+
 const result = shell.exec(`dotnet test ${projectPath}`);
 
 // Revert .csproj file back to original
