@@ -1,5 +1,6 @@
 const fs = require("fs");
 const shell = require("shelljs");
+const path = require('path');
 
 // Extract cl arguments
 const clArgs = process.argv.slice(2);
@@ -12,6 +13,8 @@ console.log("featurePath:" + featurePath);
 const projectPath = "./tests/FeaturesTests/FeaturesTests.csproj";
 
 const originalFile = fs.readFileSync(projectPath, "utf-8");
+
+if(!path.isAbsolute(featurePath)) featurePath = "$(ProjectDir)" + featurePath;
 
 // Replace file path to .feature files in .csproj file, use handlebars style to help make the search value unique
 fs.writeFileSync(projectPath, originalFile.replace("{{FEATURE_PATH}}", featurePath));
