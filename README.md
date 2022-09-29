@@ -31,8 +31,13 @@ $ openapi-forge forge
 
 Using the one command below you can automatically run the testing:
 ~~~
-npm test
+npm test [{featurePath}]
 ~~~
+The featurePath argument is optional.
+
+Default value:
+
+featurePath: node_modules/openapi-forge/features/*.feature
 
 ## Notes
 
