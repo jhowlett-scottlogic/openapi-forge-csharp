@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "generate-api": "openapi-forge forge ./example/petstore.json . -o ./example",
-    "test": "node test"
+    "test": "node test",
+    "format:check": "node format check",
+    "format:write": "node format write"
   },
   "repository": {
     "type": "git",

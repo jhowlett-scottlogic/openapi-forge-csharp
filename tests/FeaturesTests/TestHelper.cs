@@ -134,7 +134,7 @@ namespace Features
             var command = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? "cmd.exe"
                 : commandText.Substring(0, commandText.IndexOf(' '));
-                
+
             var commandParams = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? $"/C {commandText}"
                 : commandText.Substring(commandText.IndexOf(' ') + 1);
