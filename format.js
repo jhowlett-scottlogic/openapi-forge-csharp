@@ -15,8 +15,6 @@ const clArgs = process.argv.slice(2);
 
 let type = clArgs[0] || "check";
 
-console.log(type);
-
 let args;
 
 switch (type) {
