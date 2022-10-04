@@ -9,7 +9,7 @@ on:
 jobs:
   run-code-format:
     name: Code Format
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]    
