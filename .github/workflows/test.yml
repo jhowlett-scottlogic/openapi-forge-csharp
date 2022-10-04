@@ -9,7 +9,7 @@ on:
 jobs:
   test-generator:
     name: Test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x] 
