@@ -6,9 +6,8 @@
   "scripts": {
     "generate-api": "openapi-forge forge ./example/petstore.json . -o ./example",
     "test": "node test",
-    "eslint:check": "eslint .",
-    "eslint:write": "eslint --fix .",
-    "lint:check": "node lint"
+    "lint:check": "eslint .",
+    "lint:write": "eslint --fix ."
   },
   "repository": {
     "type": "git",
