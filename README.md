@@ -21,7 +21,7 @@ Install all the dependencies needed:
 npm install
 ```
 
-Once you have a local version, you can reference it's location as the 'generator' argument of the 'forge' command of openapi-forge.
+Once you have a local version, you can reference its location as the 'generator' argument of the 'forge' command of openapi-forge.
 
 ```
 $ openapi-forge forge
