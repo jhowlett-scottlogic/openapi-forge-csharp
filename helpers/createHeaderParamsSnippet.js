@@ -5,9 +5,21 @@ const getParametersByType = require("./getParametersByType");
 const createHeaderParamsSnippet = (sortedParams) => {
   let headerSnippet = "";
 
+  //Add cookie parameters
+  const cookieParams = getParametersByType(sortedParams, "cookie");
+  if (cookieParams.length !== 0) {
+    let safeParamName = toParamName(cookieParams[0].name);
+    headerSnippet += `request.Headers.Add("cookie", $"${cookieParams[0].name}={${safeParamName}}`;
+    for (const cookieParam of cookieParams) {
+      safeParamName = toParamName(cookieParam.name);
+      headerSnippet += `;${cookieParam.name}={${safeParamName}}`;
+    }
+    headerSnippet += '");\n';
+  }
+
   const headerParams = getParametersByType(sortedParams, "header");
   if (headerParams.length === 0) {
-    return headerSnippet;
+    return new Handlebars.SafeString(headerSnippet);
   }
 
   for (const headerParam of headerParams) {
@@ -21,9 +33,10 @@ const createHeaderParamsSnippet = (sortedParams) => {
         headerSnippet +=
           `request.Headers.Add("${headerParam.name}", string.Join(",", ${safeParamName}))` +
           ";\n";
-      case "object":
+        break;
+      case "object": {
         let serialisedObject = "";
-        for (const [propName, objProp] of Object.entries(
+        for (const [propName] of Object.entries(
           headerParam.schema.properties
         )) {
           serialisedObject += `${propName},${safeParamName}.${propName}`;
@@ -31,6 +44,8 @@ const createHeaderParamsSnippet = (sortedParams) => {
         headerSnippet +=
           `request.Headers.Add("${headerParam.name}", ${serialisedObject})` +
           ";\n";
+        break;
+      }
       default:
         headerSnippet +=
           `request.Headers.Add("${headerParam.name}", ${safeParamName})` +
