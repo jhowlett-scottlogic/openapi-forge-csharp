@@ -3,14 +3,15 @@ const arrayCount = supportedTypes.length - 1;
 
 const pathContentTypeSupported = (path) => {
   if (path.requestBody) {
-    for (let i = 0; i <= arrayCount; i++) {
-      if (path.requestBody.content) {
+    if (path.requestBody.content) {
+      for (let i = 0; i <= arrayCount; i++) {
         if (path.requestBody.content[supportedTypes[i]]) {
           return true;
         } else {
           continue;
         }
       }
+      return false;
     }
     return false;
   }
@@ -42,6 +43,7 @@ const pathContentTypeSupported = (path) => {
         return true;
       }
     }
+    return false;
   }
   return true;
 };
