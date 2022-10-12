@@ -2,21 +2,21 @@ const supportedTypes = ["application/json", "text/plain"];
 const arrayCount = supportedTypes.length - 1;
 
 const pathContentTypeSupported = (path) => {
-  for (let i = 0; i <= arrayCount; i++) {
-    if (path.requestBody) {
+  if (path.requestBody) {
+    for (let i = 0; i <= arrayCount; i++) {
       if (path.requestBody.content) {
         if (path.requestBody.content[supportedTypes[i]]) {
           return true;
-        } else if (i === arrayCount) {
-          return false;
         } else {
           continue;
         }
       }
-      return false;
     }
+    return false;
+  }
 
-    if (path.responses) {
+  if (path.responses) {
+    for (let i = 0; i <= arrayCount; i++) {
       if (
         Object.entries(path.responses).some(
           (entry) =>
@@ -41,16 +41,9 @@ const pathContentTypeSupported = (path) => {
       ) {
         return true;
       }
-
-      if (i === arrayCount) {
-        return false;
-      } else {
-        continue;
-      }
     }
-
-    return true;
   }
+  return true;
 };
 
 module.exports = pathContentTypeSupported;
