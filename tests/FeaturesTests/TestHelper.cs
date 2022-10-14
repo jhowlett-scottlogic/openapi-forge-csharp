@@ -49,7 +49,7 @@ namespace Features
 
         private void ForgeApi()
         {
-            RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath} -s -l v ");
+            RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath} -s");
         }
 
         private void GetApiClientTypes()
@@ -153,11 +153,6 @@ namespace Features
 
             using var errorReader = cmd.StandardError;
             var errorOutput = errorReader.ReadToEnd();
-
-            using var outReader = cmd.StandardOutput;
-            var outOutput = outReader.ReadToEnd();
-
-            Console.WriteLine(outOutput);
 
             Assert.Equal(string.Empty, errorOutput);
         }
