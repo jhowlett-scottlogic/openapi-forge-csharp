@@ -12,7 +12,7 @@ function parse(resultLine) {
       skipped: parseInt(resultMatch[3]),
       undef: 0,
       failed: parseInt(resultMatch[1]),
-      time: resultMatch[5].replace(" ", "")
+      time: resultMatch[5].replace(" ", ""),
     };
   } else {
     throw new Error(`Could not parse the results of the CSharp testing.`);
