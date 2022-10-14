@@ -7,11 +7,8 @@ const pathContentTypeSupported = (path) => {
       for (let i = 0; i <= arrayCount; i++) {
         if (path.requestBody.content[supportedTypes[i]]) {
           return true;
-        } else {
-          continue;
         }
       }
-      return false;
     }
     return false;
   }
