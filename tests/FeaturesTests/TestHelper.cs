@@ -49,7 +49,7 @@ namespace Features
 
         private void ForgeApi()
         {
-            RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath} -s");
+            RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath} -s -l v");
         }
 
         private void GetApiClientTypes()
