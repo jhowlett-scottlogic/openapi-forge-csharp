@@ -4,6 +4,7 @@
   "description": "OpenAPI-Forge CSharp template",
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "generate-api": "openapi-forge forge ./example/petstore.json . -o ./example",
     "test": "node test",
     "lint:check:all": "eslint .",
