@@ -33,7 +33,7 @@
     "eslint": "^8.24.0",
     "handlebars": "^4.7.7",
     "husky": "^8.0.1",
-    "openapi-forge": "github:scottlogic/openapi-forge#776b77c9f1b4595d3660041a4bc4853a4c08b8e8",
+    "openapi-forge": "latest",
     "path": "^0.12.7",
     "semantic-release": "^19.0.5"
   },
