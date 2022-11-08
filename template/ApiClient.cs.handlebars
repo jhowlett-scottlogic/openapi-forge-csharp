@@ -15,7 +15,7 @@ using System.Web;
     // {{info.title}}
     {{/if}}
     {{#if _tag.description}}// {{_tag.description}}{{/if}}
-    public class ApiClient{{_tag.name}}  : IApiClient
+    public class ApiClient{{_tag.name}}  : IApiClient{{_tag.name}}
     {
       private const string ContentType = "application/json";
       private readonly string _baseAddress;

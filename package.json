@@ -2,7 +2,10 @@
   "name": "openapi-forge-csharp",
   "version": "0.1.0",
   "description": "OpenAPI-Forge CSharp template",
-  "apiTemplate": "ApiClient.cs.handlebars",
+  "apiTemplates": [
+    "ApiClient.cs.handlebars",
+    "IApiClient.cs.handlebars"
+  ],
   "main": "index.js",
   "scripts": {
     "generate-api": "openapi-forge forge ./example/petstore.json . -o ./example",
@@ -40,5 +43,8 @@
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5"
   }
 }

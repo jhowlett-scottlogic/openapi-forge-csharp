@@ -42,6 +42,15 @@ namespace Features
             _testHelper.GenerateApi(schema.Content);
         }
 
+        [Given(@"an API with the following specification and tag ""(.*)""")]
+        public virtual void GenerateWithTag(string tag, DocString schema)
+        {
+            Assert.False(string.IsNullOrWhiteSpace(schema.Content),
+                $"Parameter '{nameof(schema)}' must not be null or whitespace");
+            _docStringContent = schema.Content;
+            _testHelper.GenerateApi(schema.Content, tag);
+        }
+
         [Then(@"the requested URL should be (.+)")]
         public void CheckRequestUri(string url)
         {
