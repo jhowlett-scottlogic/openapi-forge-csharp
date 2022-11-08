@@ -15,13 +15,13 @@ using System.Web;
     // {{info.title}}
     {{/if}}
     {{#if _tag.description}}// {{_tag.description}}{{/if}}
-    public class ApiClient{{#ifNotEquals _tag.name ""}}{{capitalizeFirst _tag.name}}{{/ifNotEquals}}  : IApiClient
+    public class ApiClient{{_tag.name}}  : IApiClient
     {
       private const string ContentType = "application/json";
       private readonly string _baseAddress;
       private readonly HttpClient _client;
 
-      public ApiClient{{#ifNotEquals _tag.name ""}}{{capitalizeFirst _tag.name}}{{/ifNotEquals}}(HttpClient httpClient, Configuration config) 
+      public ApiClient{{_tag.name}}(HttpClient httpClient, Configuration config) 
       {
         _client = httpClient;
         _baseAddress = config.GetBaseAddress();
