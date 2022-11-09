@@ -39,6 +39,7 @@
     "husky": "^8.0.1",
     "openapi-forge": "github:scottlogic/openapi-forge#776b77c9f1b4595d3660041a4bc4853a4c08b8e8",
     "path": "^0.12.7",
+    "prettier": "^2.7.1",
     "semantic-release": "^19.0.5"
   },
   "engines": {

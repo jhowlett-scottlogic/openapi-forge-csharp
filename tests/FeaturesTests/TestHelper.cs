@@ -26,11 +26,11 @@ namespace Features
             _schemaFilePath = $"{_outputPath}/schema.json";
         }
 
-        public void GenerateApi(string schema, string tag = "")
+        public void GenerateApi(string schema)
         {
             WriteToJsonFile(schema);
             ForgeApi();
-            GetApiClientTypes(tag);
+            GetApiClientTypes();
         }
 
         private void WriteToJsonFile(string fileContent)
@@ -52,19 +52,18 @@ namespace Features
             RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath}");
         }
 
-        private void GetApiClientTypes(string tag = "")
+        private void GetApiClientTypes()
         {
             CreateProjectFile();
             CompileCode();
-            StoreApiClientType(tag);
+            StoreApiClientType();
         }
 
-        private void StoreApiClientType(string tag = "")
+        private void StoreApiClientType()
         {
-            if (tag != "") tag = char.ToUpper(tag[0]) + tag.Substring(1);
             _generatedAssembly = Assembly.LoadFrom(Path.GetFullPath($"{_outputPath}/bin/Api{_testId}.dll"));
             _configurationType = _generatedAssembly.GetType("OpenApiForge.Configuration");
-            _apiClientType = _generatedAssembly.GetType($"OpenApiForge.ApiClient{tag}");
+            _apiClientType = _generatedAssembly.GetType($"OpenApiForge.ApiClient");
         }
 
         private void CreateProjectFile()

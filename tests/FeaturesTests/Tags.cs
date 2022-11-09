@@ -16,20 +16,40 @@ namespace Features
         {
         }
 
-        [Then(@"the method ""(.*)"" should be present")]
-        public void ThenMethodExists(String method)
+        private String getTagFileName(String tag)
         {
-            var apiClient = _testHelper.CreateApiClient(_mockHttp.ToHttpClient(), 0);
-            var methodInfo = apiClient.GetType().GetMethod(method);
+            return (tag == "") ? "" : tag[0].ToString().ToUpper() + tag.Substring(1);
+        }
+
+        [Then(@"the api file with tag ""(.*)"" exists")]
+        [And(@"the api file with tag ""(.*)"" exists")]
+        public void ThenApiFileWithTagExists(String tag)
+        {
+            Assert.NotNull(_testHelper.TryGetType($"ApiClient{getTagFileName(tag)}"));
+            Assert.NotNull(_testHelper.TryGetType($"IApiClient{getTagFileName(tag)}"));
+        }
+
+        [Then(@"the api file with tag ""(.*)"" does not exist")]
+        [And(@"the api file with tag ""(.*)"" does not exist")]
+        public void ThenApiFileWithTagDoesNotExist(String tag)
+        {
+            Assert.Null(_testHelper.TryGetType($"ApiClient{getTagFileName(tag)}"));
+            Assert.Null(_testHelper.TryGetType($"IApiClient{getTagFileName(tag)}"));
+        }
+
+        [Then(@"the method ""(.*)"" should be present in the api file with tag ""(.*)""")]
+        [And(@"the method ""(.*)"" should be present in the api file with tag ""(.*)""")]
+        public void ThenMethodExists(String method, String tag)
+        {
+            var methodInfo = _testHelper.TryGetType($"ApiClient{getTagFileName(tag)}").GetMethod(method);
             Assert.NotNull(methodInfo);
         }
 
-        [Then(@"the method ""(.*)"" should not be present")]
-        [And(@"the method ""(.*)"" should not be present")]
-        public void ThenMethodDoesNotExist(String method)
+        [Then(@"the method ""(.*)"" should not be present in the api file with tag ""(.*)""")]
+        [And(@"the method ""(.*)"" should not be present in the api file with tag ""(.*)""")]
+        public void ThenMethodDoesNotExist(String method, String tag)
         {
-            var apiClient = _testHelper.CreateApiClient(_mockHttp.ToHttpClient(), 0);
-            var methodInfo = apiClient.GetType().GetMethod(method);
+            var methodInfo = _testHelper.TryGetType($"ApiClient{getTagFileName(tag)}").GetMethod(method);
             Assert.Null(methodInfo);
         }
     }
