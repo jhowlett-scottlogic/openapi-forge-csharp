@@ -63,7 +63,7 @@ namespace Features
         {
             _generatedAssembly = Assembly.LoadFrom(Path.GetFullPath($"{_outputPath}/bin/Api{_testId}.dll"));
             _configurationType = _generatedAssembly.GetType("OpenApiForge.Configuration");
-            _apiClientType = _generatedAssembly.GetType($"OpenApiForge.ApiClient");
+            _apiClientType = _generatedAssembly.GetType("OpenApiForge.ApiClient");
         }
 
         private void CreateProjectFile()
