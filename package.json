@@ -2,8 +2,13 @@
   "name": "openapi-forge-csharp",
   "version": "0.1.0",
   "description": "OpenAPI-Forge CSharp template",
+  "apiTemplates": [
+    "ApiClient.cs.handlebars",
+    "IApiClient.cs.handlebars"
+  ],
   "main": "index.js",
   "scripts": {
+    "prepare": "husky install",
     "generate-api": "openapi-forge forge ./example/petstore.json . -o ./example",
     "test": "node test",
     "lint:check:all": "eslint .",
@@ -33,11 +38,15 @@
     "eslint": "^8.24.0",
     "handlebars": "^4.7.7",
     "husky": "^8.0.1",
-    "openapi-forge": "github:scottlogic/openapi-forge#776b77c9f1b4595d3660041a4bc4853a4c08b8e8",
+    "openapi-forge": "latest",
     "path": "^0.12.7",
+    "prettier": "^2.7.1",
     "semantic-release": "^19.0.5"
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5"
   }
 }
