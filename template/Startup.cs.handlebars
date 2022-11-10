@@ -9,7 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
     {
         public static IServiceCollection RegisterApiClient(this IServiceCollection services, Configuration configuration)
         {
-            services.AddHttpClient<IApiClient, ApiClient>(client => 
+            {{#each _tags}}
+            services.AddHttpClient<IApiClient{{name}}, ApiClient{{name}}>(client => 
             {
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -17,6 +18,8 @@ using Microsoft.Extensions.DependencyInjection;
                     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {configuration.BearerToken}");
                 }
             });
+
+            {{/each}}
 
             return services;
         }

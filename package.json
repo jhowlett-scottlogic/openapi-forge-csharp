@@ -2,6 +2,10 @@
   "name": "openapi-forge-csharp",
   "version": "0.1.0",
   "description": "OpenAPI-Forge CSharp template",
+  "apiTemplates": [
+    "ApiClient.cs.handlebars",
+    "IApiClient.cs.handlebars"
+  ],
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
@@ -36,9 +40,13 @@
     "husky": "^8.0.1",
     "openapi-forge": "latest",
     "path": "^0.12.7",
+    "prettier": "^2.7.1",
     "semantic-release": "^19.0.5"
   },
   "engines": {
     "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.5"
   }
 }
