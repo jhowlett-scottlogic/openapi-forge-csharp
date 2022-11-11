@@ -11,6 +11,8 @@ namespace Features
 
         private readonly string _schemaFilePath;
 
+        private readonly string _currentDirectory;
+
         private readonly string _testId;
 
         private Type _configurationType;
@@ -22,8 +24,9 @@ namespace Features
         public TestHelper(string testId)
         {
             _testId = testId;
-            _outputPath = $"./generated-tests/{testId}";
+            _outputPath = $"generated-tests/{testId}";
             _schemaFilePath = $"{_outputPath}/schema.json";
+            _currentDirectory = Directory.GetCurrentDirectory();
         }
 
         public void GenerateApi(string schema)
@@ -49,7 +52,7 @@ namespace Features
 
         private void ForgeApi()
         {
-            RunCmdPrompt($"openapi-forge forge {_schemaFilePath} {Constants.TemplateProjectPath} -o {_outputPath}");
+            RunCmdPrompt($"cd ../../../../../../ && npx openapi-forge forge {_currentDirectory}/{_schemaFilePath} {_currentDirectory}/{Constants.TemplateProjectPath} -o {_currentDirectory}/{_outputPath} -l v");
         }
 
         private void GetApiClientTypes()
