@@ -29,9 +29,8 @@ jobs:
           npm install
 
       - name: Install Forge
-        uses: actions/checkout@master
-        with:
-          name: ScottLogic/openapi-forge
+        run: |
+          git clone https://github.com/ScottLogic/openapi-forge.git
 
       - name: test-generator
         run: npm run test
