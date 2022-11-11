@@ -7,7 +7,7 @@ const clArgs = process.argv.slice(2);
 
 // Retrieve the path to feature paths from cl arguments of 'npm test', use default value if none given
 let featurePath =
-  clArgs[0] || "../../node_modules/openapi-forge/features/*.feature";
+  clArgs[0] || "../../../openapi-forge/features/*.feature";
 
 if (!path.isAbsolute(featurePath)) featurePath = "$(ProjectDir)" + featurePath;
 
