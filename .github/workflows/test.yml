@@ -31,6 +31,8 @@ jobs:
       - name: Install Forge
         run: |
           git clone https://github.com/ScottLogic/openapi-forge.git
+          cd openapi-forge
+          npm install
 
       - name: test-generator
         run: npm run test
