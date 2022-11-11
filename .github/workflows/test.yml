@@ -28,6 +28,11 @@ jobs:
         run: |
           npm install
 
+      - name: Install Forge
+        uses: actions/checkout@master
+        with:
+          name: ScottLogic/openapi-forge
+
       - name: test-generator
         run: npm run test
         continue-on-error: true
